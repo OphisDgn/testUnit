@@ -19,6 +19,23 @@ const server = setupServer(
         })
       );
     }
+  ),
+  rest.get(
+    "https://randomuser.me/api/",
+    (req, res, ctx) => {
+      return res(
+        ctx.json({results: [{
+          name: {
+            title: "Ms",
+            first: "Vanja",
+            last: "Bron",
+          },
+          picture: {
+            thumbnail: "https://randomuser.me/api/portraits/thumb/women/31.jpg",
+          }
+        }]})
+      );
+    }
   )
 );
 
@@ -30,4 +47,11 @@ test("load meteo mock", async () => {
   const { container } = render(<App />);
   await waitFor(() => screen.getByText(/Météo actuel/i));
   expect(container.getElementsByTagName("img").length).toBe(1);
+});
+
+test("load user mock", async () => {
+  const { container } = render(<App />);
+  await waitFor(() => screen.getByText(/Vanja/i));
+  expect(container.getElementsByTagName("span").length).toBe(1);
+  expect(container.getElementsByTagName("img").length).toBe(2);
 });

@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const useMeteo = () => {
   const [meteo, setMeteo] = useState<any>();
   const [user, setUser] = useState<any>();
 
-  const loadRandomUser = () => {
+  const loadRandomUser = useCallback(() => {
     fetch("https://randomuser.me/api/")
       .then((res) => res.json())
       .then((res) => {
         setUser(res.results[0]);
+        // console.log(res.results[0]);
       });
-  };
+  }, []);
 
   const loadMeteo = () => {
     fetch("https://prevision-meteo.ch/services/json/aix-en-provence")

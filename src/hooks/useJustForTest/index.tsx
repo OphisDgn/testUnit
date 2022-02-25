@@ -12,7 +12,13 @@ const useJustForTest = () => {
   };
 
   const toContainEqual = () => {
-    return { delicious: true, sour: false };
+    return [
+      { delicious: true, sour: false },
+      {
+        a: "a",
+        b: "b",
+      },
+    ];
   };
 
   const testToStrictEqual = () => {

@@ -7,13 +7,13 @@ function App() {
 
   return (
     <main className="container">
-      {user && (
+      {user && user.name && user.picture && (
         <div>
-          <p>Utilisateur</p>
+          <h5>Utilisateur</h5>
           <img src={user.picture.thumbnail} alt="" />
-          <p>
+          <span>
             {user.name.title} {user.name.first} {user.name.last}
-          </p>
+          </span>
         </div>
       )}
       {meteo && meteo.current_condition && (
