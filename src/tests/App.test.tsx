@@ -16,7 +16,7 @@ test("renders have calculatrice", () => {
   const { container } = render(<App />);
   const title = screen.getByText(/calculatrice/i);
   expect(title).toBeInTheDocument();
-  expect(container.getElementsByClassName("touch").length).toBe(15);
+  expect(container.getElementsByClassName("touch").length).toBe(17);
 });
 
 test("renders result calculatrice", () => {
